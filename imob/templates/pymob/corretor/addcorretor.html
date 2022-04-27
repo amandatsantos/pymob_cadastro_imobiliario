@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% include '_messages.html' %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h2 class="text-center bg-success p-2 mt-2"> ADICIONAR CORRETOR </h2>
+            {% from "_formhelpers.html" import render_field %}
+            <form action="" method="POST" enctype="multipart/form-data">
+
+                {{ render_field(form.name, class="form-control", placeholder ="nome corretor") }}
+                {{ render_field(form.username, class="form-control", placeholder ="nome de usuario") }}
+                {{ render_field(form.creci, class="form-control", placeholder ="00000-UF") }}
+                {{ render_field(form.cpf, class="form-control", placeholder ="000.000.000-00") }}
+                {{ render_field(form.telefone, class="form-control", placeholder ="(xx) x xxxx-xxxx") }}
+                {{ render_field(form.email, class="form-control", placeholder ="@e-mail.com") }}
+
+
+
+
+
+
+
+
+                <button type="submit" class="btn btn-outline-success mt-4">CADASTRAR </button>
+            </form>
+            <a href="{{url_for('corretores')}}" class="btn  btn-sm btn-outline-danger mt-4" style="margin-top: 10px">voltar</a>
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+{% endblock content %}

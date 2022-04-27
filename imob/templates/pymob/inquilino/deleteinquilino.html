@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <form action="" method="post">
+        clique no sim para confirmar
+        <input type="submit" value="YES" class="btn btn-outline-danger">
+        <a href="{{url_for('contratos')}}"> cancel </a>
+    </form>
+</div>
+
+{% endblock content %}

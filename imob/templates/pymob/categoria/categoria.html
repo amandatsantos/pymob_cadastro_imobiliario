@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include '_messages.html' %}
+<div class="conteiner">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
+        <div class="container-fluid">
+            <a class="navbar-brand mt-2" href="#">{{title}}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/addcategoria">Criar Categoria</a>
+                    </li>
+
+
+
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container  mt- 5 ">
+    <table class=" table table-sm table-striped">
+        <thead>
+
+            <th>Id</th>
+            <th>categoria</th>
+
+            <th>ADICIONAR</th>
+            <th>EDITAR</th>
+            <th>DELETAR</th>
+
+        </thead>
+
+        <tbody>
+            {% for categoria in categorias %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{categoria.name}}</td>
+
+
+                <td><a href="/addcategoria" class="btn btn-sm btn-outline-success">ADICIONAR </a></td>
+                <td><a href="{{url_for('updatecategoria', id=categoria.id)}}" class="btn btn-sm btn-outline-info">EDITAR </a></td>
+
+                <td>
+                    <a href="{{url_for('deletecategoria', id=categoria.id)}}" class="btn btn-sm btn-outline-danger">DELETAR</a>
+                </td>
+
+
+
+
+            </tr>
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+{% endfor %}
+</table>
+</div>
+{% endblock content %}

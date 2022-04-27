@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include '_messages.html' %}
+<div class="conteiner">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">{{title}}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/addcontrato">Cradastrar Contrato</a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+</div>
+</ul>
+<div class="container  mt- 5 ">
+    <table class=" table table-sm table-striped">
+        <thead>
+
+            <th>CONTRATO ID</th>
+            <th>TEMPO CONTRATADO</th>
+            <th>DATA DE INICIO DE CONTRATO</th>
+            <th>DATA DE FECHAMENTO DO CONTRATO</th>
+            <th>ALUGUEL ID</th>
+
+
+            <th>editar</th>
+            <th>deletar</th>
+
+        </thead>
+
+        <tbody>
+            {% for contrato in contratos %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{contrato.contract_months}}</td>
+                <td>{{contrato.contract_start_date}}</td>
+                <td>{{contrato.contract_terminated_date}}</td>
+                <td>{{contrato.aluguel_id}}</td>
+
+
+                <td><a href="/addcontrato" class="btn btn-sm btn-outline-success">CRIAR </a></td>
+                <td><a href="{{url_for('updatecontrato', id=contrato.id)}}" class="btn btn-sm btn-outline-info">EDITAR </a></td>
+                <td>
+                    <a href="{{url_for('deletecontrato', id=contrato.id)}}" class="btn btn-sm btn-outline-danger">DELETAR</a></form>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+</div>
+{% endblock content %}

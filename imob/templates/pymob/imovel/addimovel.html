@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% include '_messages.html' %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h2 class="text-center bg-success p-2 mt-2"> ADICIONAR IMOVEL </h2>
+            {% from "_formhelpers.html" import render_field %}
+            <form action="" method="POST" enctype="multipart/form-data">
+
+                {{ render_field(form.immobile_title, class="form-control", placeholder ="Titulo do imovel") }}
+                {{ render_field(form.street_address, class="form-control", placeholder ="Logadouro ") }}
+                {{ render_field(form.neighborhood, class="form-control", placeholder ="Bairro") }}
+                {{ render_field(form.city, class="form-control", placeholder ="Cidade") }}
+                {{ render_field(form.state, class="form-control", placeholder ="Estado") }}
+                {{ render_field(form.cep, class="form-control", placeholder ="CEP") }}
+                {{ render_field(form.price, class="form-control", placeholder ="Preço do aluguel") }}
+                {{ render_field(form.description, class="form-control", type="textarea", placeholder ="Descrição do imovel", row="200") }}
+
+                <label for="categoria"> <b>adicionar categoria</b></label>
+                <select name="categoria" id="categoria" class="form-control" required>
+                    <option value="">selecione uma categoria</option>
+
+                    {% for categoria in categorias %}
+                    <option value="{{categoria.id}}"> {{categoria.name}} </option>
+                    {% endfor %}
+                </select>
+
+
+
+
+
+                <button type="submit" class="btn btn-sm btn-outline-success mt-2">CADASTRAR </button>
+            </form>
+            <a href="{{url_for('imoveis')}}" class="btn  btn-sm btn-outline-danger mt-4" style="margin-top: 10px">voltar</a>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+
+</div>
+{% endblock content %}

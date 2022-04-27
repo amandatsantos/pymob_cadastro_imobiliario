@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include '_messages.html' %}
+<div class="conteiner">
+
+
+    <div class="text-center h1 text-success mt-5 p-3 mb-2 bg-dark text-white"> CONSULTAR CADASTROS
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+    </div>
+</div>
+</nav>
+</div>
+<div class=" d-flex justify-content-center flex-nowrap mt-5">
+    <table class=" table table-sm table-striped height: 100px">
+        <thead>
+
+            <tr>
+
+                <td>
+                    <a href="{{url_for('categorias')}}" class="btn btn-sm btn btn-outline-success  bt-outline">CONSULTAR CATEGORIAS</a>
+                </td>
+
+
+
+                <td>
+                    <a href="{{url_for('imoveis')}}" class="btn btn-sm btn-outline-success  mt-3">CONSULTAR IMOVEIS</a>
+                </td>
+
+
+
+                <td>
+                    <a href="{{url_for('proprietarios')}}" class="btn btn-sm btn-outline-success  mt-3">CONSULTAR PROPRIETARIOS</a>
+                </td>
+                <td>
+                    <a href="{{url_for('inquilinos')}}" class="btn btn-sm btn-outline-success  mt-3">CONSULTAR INQUILINOS</a>
+                </td>
+
+
+                <td>
+                    <a href="{{url_for('corretores')}}" class="btn btn-sm btn-outline-success  mt-3">CONSULTAR CORRETORES</a>
+                </td>
+
+
+                <td>
+                    <a href="{{url_for('alugueis')}}" class="btn btn-sm btn-outline-success  mt-3">CONSULTAR ALUGUEIS</a>
+                </td>
+
+
+                <td>
+                    <a href="{{url_for('contratos')}}" class="btn btn-sm btn-outline-success  mt-3">CONSULTAR CONTRATOS</a>
+                </td>
+            </tr>
+</div>
+
+
+</thead>
+
+
+</table>
+</div>
+{% endblock content %}

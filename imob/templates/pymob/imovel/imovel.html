@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include '_messages.html' %}
+<div class="conteiner">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
+        <div class="container-fluid">
+            <a class="navbar-brand " href="#">{{title}}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/addimovel">Criar Imovel</a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+</div>
+</ul>
+<div class="container mt- 5 ">
+    <table class=" table table-sm table-striped ">
+        <thead>
+
+            <th>Id</th>
+            <th>imovel</th>
+            <th>logadouro</th>
+            <th>bsirro</th>
+            <th>cidade</th>
+            <th>estado</th>
+            <th>CEP</th>
+            <th>Valor Aluguel</th>
+            <th>Descrição do imovel</th>
+            <th>Categoria</th>
+            <th>CRIAR</th>
+            <th>CRIAR</th>
+            <th>DELETAR</th>
+
+        </thead>
+
+        <tbody class=" table table-sm ">
+            {% for imovel in imoveis %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{imovel.immobile_title}}</td>
+                <td>{{imovel.street_address}}</td>
+                <td>{{imovel.neighborhood}}</td>
+                <td>{{imovel.city}}</td>
+                <td>{{imovel.state}}</td>
+                <td>{{imovel.cep}}</td>
+                <td>{{imovel.price}}</td>
+                <td>{{imovel.description}}</td>
+                <td>{{imovel.categoria_id}}</td>
+
+                <td><a href="/addimovel" class="btn btn-sm btn-outline-success">CRIAR </a></td>
+                <td><a href="{{url_for('updateimovel', id=imovel.id)}}" class="btn btn-sm btn-outline-info">EDITAR </a></td>
+
+                <td>
+                    <a href="{{url_for('deleteimovel', id=imovel.id)}}" class="btn btn-sm btn-outline btn-danger">DELETAR</a>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+</div>
+{% endblock content %}

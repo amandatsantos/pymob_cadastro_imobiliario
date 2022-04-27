@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include '_messages.html' %}
+<div class="conteiner">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">{{title}}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/addcorretor">Cradastrar corretor</a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+</div>
+</ul>
+<div class="container  mt- 5 ">
+    <table class=" table table-sm table-striped">
+        <thead>
+
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Nome de usuario</th>
+            <th>Creci</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>ADICIONAR</th>
+            <th>EDITAR</th>
+            <th>DELETAR</th>
+
+        </thead>
+
+        <tbody>
+            {% for corretor in corretores %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{corretor.name}}</td>
+                <td>{{corretor.username}}</td>
+                <td>{{corretor.creci}}</td>
+                <td>{{corretor.cpf}}</td>
+                <td>{{corretor.telefone}}</td>
+                <td>{{corretor.email}}</td>
+
+
+                <td><a href="/addcorretor" class="btn btn-sm btn-outline-success"> ADICIONAR </a></td>
+                <td><a href="{{url_for('updatecorretor', id=corretor.id)}}" class=" btn btn-sm btn-outline-info"> EDITAR </a></td>
+
+                <td>
+                    <a href="{{url_for('deletecorretor', id=corretor.id)}}" class="btn btn-sm btn-outline-danger">DELETAR</a>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+</div>
+{% endblock content %}

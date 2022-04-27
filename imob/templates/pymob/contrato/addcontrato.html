@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% include '_messages.html' %}
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h2 class="text-center bg-success p-2 mt-2"> ADICIONAR CONTRATO </h2>
+            {% from "_formhelpers.html" import render_field %}
+            <form action="" method="POST" enctype="multipart/form-data">
+
+                {{ render_field(form.contract_months, class='form-control',placeholder ="tempo de contrato ex :1 mês; 6 meses ;1ano",row='200') }}
+                {{ render_field(form.contract_start_date, class="form-control" , type='date',placeholder ="valor do alguel") }}
+                {{ render_field(form.contract_terminated_date, class="form-control", type='date' ,placeholder ="valor do alguel") }}
+
+
+                <!--  imovel -->
+                <label for="aluguel"> adicionar aluguel</label>
+                <select name="aluguel" id="aluguel" class="form-control" required>
+                    <option value="">SELECIONE O ID DO ALUGUEL PARA O CONTRATO</option>
+
+                    {% for aluguel in alugueis %}
+                    <option value="{{aluguel.id}}"> ID : {{aluguel.id}} </option>
+                    {% endfor %}
+                </select>
+
+
+
+
+
+
+
+                <button type="submit" class="btn btn-sm btn-outline-success mt-4">CADASTRAR </button>
+            </form>
+            <a href="{{url_for('contratos')}}" class="btn  btn-sm btn-outline-danger mt-4" style="margin-top: 10px">voltar</a>
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+{% endblock content %}

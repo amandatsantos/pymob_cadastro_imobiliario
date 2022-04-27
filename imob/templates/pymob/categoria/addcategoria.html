@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"> </div>
+        <div class="col-md-6">
+            {% include "_messages.html" %}
+            <h2 class="text-center bg-success p-2 mt-2"> CADASTRAR CATEGORRIA </h2>
+            <form action="" method="POST">
+
+                <div class="form-group">
+                    <input type="text" name="categoria" class="form-control">
+                    <input type="submit" value="Cadastrar" class="btn btn-outline-primary mt-2">
+                </div>
+            </form>
+            <a href="{{url_for('categorias')}}" class="btn  btn-sm btn-outline-danger mt-4" style="margin-top: 10px">voltar</a>
+
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock content %}

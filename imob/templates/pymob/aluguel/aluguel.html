@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include '_messages.html' %}
+<div class="conteiner">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">{{title}}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/addaluguel">Cradastrar Aluguel</a>
+                    </li>
+
+
+
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+</div>
+</ul>
+<div class="container  mt- 5 ">
+    <table class=" table table-sm table-striped">
+        <thead>
+
+            <th>ALUGUEL ID</th>
+            <th>TEMOS ALUGUEL</th>
+            <th>VALOR ACERTADO ENTRE AS PARTES ALUGUEL</th>
+            <th>IMOVEL ID</th>
+            <th>PROPRIETARIO ID</th>
+            <th>INQUILINO ID</th>
+            <th>CORRETOR ID</th>
+            <th>CRIAR</th>
+            <th>EDITAR</th>
+            <th>DELETAR</th>
+
+        </thead>
+
+        <tbody>
+            {% for aluguel in alugueis %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{aluguel.terms}}</td>
+                <td>{{aluguel.price}}</td>
+                <td>{{aluguel.imovel_id}}</td>
+                <td>{{aluguel.proprietario_id}}</td>
+                <td>{{aluguel.inquilino_id}}</td>
+                <td>{{aluguel.corretor_id}}</td>
+
+                <td><a href="/addaluguel" class="btn btn-sm btn-outline-success">CRIAR </a></td>
+                <td><a href="{{url_for('updatealuguel', id=aluguel.id)}}" class="btn btn-sm btn-outline-info">EDITAR</a></td>
+                <td><a href="{{url_for('deletealuguel', id=aluguel.id)}}" class="btn btn-sm btn-outline-darger">DELETARr</a></td>
+            </tr>
+            {% endfor %}
+    </table>
+</div>
+{% endblock content %}

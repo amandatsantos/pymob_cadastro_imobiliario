@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% include '_messages.html' %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h2 class="text-center bg-success p-2 mt-2"> ADICIONAR IMOVEL </h2>
+
+
+            {% from "_formhelpers.html" import render_field %}
+            <form action="" method="POST" enctype="multipart/form-data">
+
+                {{ render_field(form.terms, class="form-control", type="text-area",placeholder ="escreva o temos para o aluguel") }}
+                {{ render_field(form.price, class="form-control", placeholder ="valor acordado entre as partes") }}
+
+                <!--  imovel -->
+                <label for="imovel"> adicionar imovel</label>
+                <select name="imovel" id="imovel" class="form-control" required>
+                    <option value="">selecione uma imovel</option>
+
+                    {% for imovel in imoveis %}
+                    <option value="{{imovel.id}}"> {{imovel.immobile_title}} </option>
+                    {% endfor %}
+                </select>
+                <!--  proprietario -->
+                <label for="proprietario"> adicionar proprietario</label>
+                <select name="proprietario" id="proprietario" class="form-control" required>
+                    <option value="">selecione uma proprietario</option>
+
+                    {% for proprietario in proprietarios %}
+                    <option value="{{proprietario.id}}"> {{proprietario.name}} </option>
+                    {% endfor %}
+                </select>
+                <!-- inquilo -->
+                <label for="inquilino"> adicionar inquilino</label>
+                <select name="inquilino" id="inquilino" class="form-control" required>
+                    <option value="">selecione um inquilino</option>
+
+                    {% for inquilino in inquilinos %}
+                    <option value="{{inquilino.id}}"> {{inquilino.name}} </option>
+                    {% endfor %}
+                </select>
+                <!--  corretor -->
+                <label for="corretor"> adicionar corretor</label>
+                <select name="corretor" id="corretor" class="form-control" required>
+                    <option value="">selecione uma corretor</option>
+
+                    {% for corretor in corretores %}
+                    <option value="{{corretor.id}}"> {{corretor.name}} </option>
+                    {% endfor %}
+                </select>
+
+
+
+
+
+
+                <button type="submit" class="btn btn-success mt-4">CADASTRAR </button>
+            </form>
+            <a href="{{url_for('alugueis')}}" class="btn  btn-sm btn-danger mt-4" style="margin-top: 10px">voltar</a>
+
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+
+</div>
+{% endblock content %}

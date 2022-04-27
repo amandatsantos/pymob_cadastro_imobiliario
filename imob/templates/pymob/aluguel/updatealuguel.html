@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% include '_messages.html' %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h2 class="text-center bg-success p-2 mt-2"> ATUALIZAR ACORDO DE ALUGUEL </h2>
+            {% from "_formhelpers.html" import render_field %}
+            <form action="" method="POST" enctype="multipart/form-data">
+
+                {{ render_field(form.terms, class="form-control", type="text-area",placeholder ="escreva o temos para o aluguel") }}
+                {{ render_field(form.price, class="form-control", placeholder ="valor do aluguel") }}
+
+                <!--  imovel -->
+                <label for="imovel"> <b>adicionar imovel</b></label>
+                <select name="imovel" id="imovel" class="form-control" required>
+                    <option value="{{aluguel.imovel_id}}">{{ aluguel.imovel.immobile_title }}</option>
+
+                    {% for imovel in imoveis %}
+                    <option value="{{imovel.id}}"> {{imovel.immobile_title}} </option>
+                    {% endfor %}
+                </select>
+
+                <!--  proprietario -->
+
+                <label for="proprietario"> <b>adicionar proprietario</b></label>
+                <select name="proprietario" id="proprietario" class="form-control" required>
+                    <option value="{{aluguel.proprietario_id}}">{{ aluguel.proprietario.name }}</option>
+
+                    {% for proprietario in proprietarios %}
+                    <option value="{{proprietario.id}}"> {{proprietario.name}} </option>
+                    {% endfor %}
+                </select>
+                <!-- inquilo -->
+                <label for="inquilino"> <b>adicionar inquilino</b></label>
+                <select name="inquilino" id="inquilino" class="form-control" required>
+                    <option value="{{aluguel.inquilino_id}}">{{ aluguel.inquilino.name }}</option>
+
+                    {% for inquilino in inquilinos %}
+                    <option value="{{inquilino.id}}"> {{inquilino.name}} </option>
+                    {% endfor %}
+                </select>
+                <!--  corretor -->
+                <label for="corretor"> <b>adicionar corretor </b></label>
+                <select name="corretor" id="corretor " class="form-control" required>
+                    <option value="{{aluguel.corretor_id}}">{{ aluguel.corretor.name }}</option>
+
+                    {% for corretor in corretores %}
+                    <option value="{{corretor.id}}"> {{corretor.name}} </option>
+                    {% endfor %}
+                </select>
+
+
+
+
+
+
+                <button type="submit" class="btn btn-success mt-4">CADASTRAR </button>
+            </form>
+            <a href="{{url_for('alugueis')}}" class="btn btn-outline-danger" style="margin-top: 10px">Cancelar</a>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+
+</div>
+{% endblock content %}
