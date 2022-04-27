@@ -2,7 +2,7 @@
 from flask import render_template,session, request,url_for, flash, redirect
 
 from imob import app, db,  bcrypt
-#from imob.produtos.models import Produto, Marca, Categoria
+
 from .forms import LoginForm, RegistrationForm
 from .models import User
 
