@@ -24,7 +24,7 @@ class Imovel(db.Model):
     city= db.Column(db.String(20), nullable=False)
     state= db.Column(db.String(20), nullable=False)
     cep= db.Column(db.String(10), nullable=False)
-    price= db.Column(db.Numeric(10,2), nullable=False)
+    price= db.Column(db.String, nullable=False)
     description= db.Column(db.Text, nullable=False)
     # relacionamento many to one
     categoria_id = db.Column(db.Integer, db.ForeignKey("categoria.id"),nullable=False)
@@ -134,7 +134,7 @@ class Aluguel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     terms = db.Column(db.Text, nullable=False)
-    price= db.Column(db.Numeric(10,2), nullable=False)
+    price= db.Column(db.String, nullable=False)
     imovel_id = db.Column(db.Integer, db.ForeignKey("imovel.id"),unique=True,nullable=False)
     proprietario_id = db.Column(db.Integer, db.ForeignKey("proprietario.id"),unique=True,nullable=False)
     inquilino_id = db.Column(db.Integer, db.ForeignKey("inquilino.id"),unique=True,nullable=False)
